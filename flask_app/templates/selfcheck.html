@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <title> Self Check </title>
+</head>
+<body>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <figure class="text-center">
+        <h1 class="border border-danger border-4 rounded" > 나의 심장 상태는? </h1> </br>
+    </figure>
+        
+    <div class="alert alert-danger" role="alert">
+        <h4> 심근경색증 (심장마비) : </h4>
+        <p> 심장의 근육에 혈액을 공급하는 관상동맥이 여러 가지 원인에 의해 
+            갑자기 막혀서 심근에 괴사가 일어나는 질환 </p>
+    </div> </br>
+
+    <figure class="text-center">
+        <h1 class="border border-warning border-4 rounded"> 내 심장 자가 진단하기 </h1>
+    </figure>
+
+    <form method="POST" action="{{url_for('check')}}">
+    
+    <div class="alert alert-warning" role="alert">
+    <p> <strong> 기본 정보 </strong> </p>
+        <div class="input-group mb-3">
+            <span class="input-group-text"> 나이 </span>
+            <input type="text" name="age" class="form-control" placeholder="나이를 입력해주세요.">
+        </div>
+        
+        <p class="form-check form-check-inline"> 성별 : </p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sex" id="inlineRadio1" value="M"> M </input>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sex" id="inlineRadio2" value="F"> F </input>
+            </div>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+    <p> <strong> 건강 정보 </strong> </p>
+        <p class="form-check form-check-inline"> 가슴 통증 : </p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="chestpaintype" id="inlineRadio1" value="TA"> TA </input>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="chestpaintype" id="inlineRadio2" value="ATA"> ATA </input>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="chestpaintype" id="inlineRadio3" value="NAP"> NAP </input>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="chestpaintype" id="inlineRadio4" value="ASY"> ASY </input>
+            </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"> 안정시 혈압 </span>
+            <input type="text" name="restbp" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <p class="form-check form-check-inline"> 공복혈당 : </p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="fastbs" id="inlineRadio1" value="0">
+                <label class="form-check-label" for="inlineRadio2"> 0 </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="fastbs" id="inlineRadio2" value="1">
+                <label class="form-check-label" for="inlineRadio2"> 1 </label>
+            </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"> 콜레스테롤 (고지혈증) : </span>
+            <input type="text" name="chol" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <p class="form-check form-check-inline"> 안정시 심전도 : </p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="restecg" id="inlineRadio1" value="Normal">
+                <label class="form-check-label" for="inlineRadio1"> Normal </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="restecg" id="inlineRadio2" value="ST">
+                <label class="form-check-label" for="inlineRadio2"> ST </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="restecg" id="inlineRadio3" value="LVH">
+                <label class="form-check-label" for="inlineRadio3"> LVH </label>
+            </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"> 최대심박수 </span>
+            <input type="text" name="maxhr" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <p class="form-check form-check-inline"> 운동 후 협심증 느낀 적 </p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="exeang" id="inlineRadio1" value="N">
+                <label class="form-check-label" for="inlineRadio1"> N </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="exeang" id="inlineRadio2" value="Y">
+                <label class="form-check-label" for="inlineRadio2"> Y </label>
+            </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default"> 운동부하로 ST가 기준선 아래로 떨어지는 정도 </span>
+            <input type="text" name="oldpeak" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <p class="form-check form-check-inline"> ST 경사각도 </p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="stslope" id="inlineRadio1" value="Up">
+                <label class="form-check-label" for="inlineRadio1"> Up </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="stslope" id="inlineRadio2" value="Flat">
+                <label class="form-check-label" for="inlineRadio2"> Flat </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="stslope" id="inlineRadio3" value="Down">
+                <label class="form-check-label" for="inlineRadio3"> Down </label>
+            </div>
+    </div>
+
+    <figure class="text-center">
+        <button name="submit_btn" type="submit" value="predict!" class="btn btn-outline-danger rounded-pill"> 심장병 유무 예측하기 </button>
+    </figure>
+    </form>
+
+</body>
+</html>
